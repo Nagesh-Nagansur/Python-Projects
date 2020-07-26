@@ -1,6 +1,7 @@
 from colorama import Fore,Back,Style
 UserList=[]
 class User:
+    'This is for creating a user checking his balance User data'
     def __init__(self,name,item,credit=0,debit=0):
         try:
             self.itemlist=[]
@@ -118,8 +119,11 @@ class AllUsers:
         print(f"TotalOutGoing:-{self.TotalOutGoing}")
 
     def RemoveUser(self,user):
-        Alluserlist.remove(user)
-
+        if user in UserList:
+            UserList.remove(user)
+            print(f"{user.name} removed ")
+        else:
+            print(f"{user.name} Not Exist")
     def AllUserList(self):
         print("--->> Users List <<---")
         for i ,j in enumerate(UserList,start=1):
@@ -132,8 +136,8 @@ class AllUsers:
             print(f'I will get {abs(self.OverallBalance)}')
 
 rakesh=User('rakesh',debit=2000,item='Suger')
-nagesh=User('naegsh',credit=5000,item='None')
-vinayak=User('vinayak',debit=2750,item='Bagar')
+nagesh=User('nagesh',credit=5000,item='None')
+vinayak=User('vinayak',debit=2750,item='rice')
 swati=User('Swati',debit=3240,item='Penuts')
 
 
@@ -157,3 +161,4 @@ allusers.CheckTotalIncommigBalance()
 allusers.CheckTotalOutGoiingBalance()
 allusers.OverallBalance()
 allusers.AllUserList()
+allusers.RemoveUser(nagesh)
